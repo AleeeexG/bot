@@ -1,4 +1,3 @@
-
 import requests
 import time
 from datetime import datetime
@@ -11,8 +10,8 @@ SPREAD_MIN = 3.0  # Мінімальний спред 3%
 SPREAD_MAX = 50.0  # Максимальний спред 50% (відсіюємо великі коливання)
 VOLUME_MIN = 100000  # Мінімальний об'єм торгів ($)
 CHECK_INTERVAL = 30  # Перевірка кожні 30 сек
-TELEGRAM_TOKEN = "7547627736:AAGFAHfWIR8wOfqD5M25lr42-SgmQ0e_gLs"  # Опціонально
-CHAT_ID = "772442439"  # Опціонально
+TELEGRAM_TOKEN = "7642441111:AAEMbcxjql85mkpo4h-78uTKjfxAnI4Rls4"  # Опціонально
+CHAT_ID = "1010900272"  # Опціонально
 
 class ArbitrageBot:
     def __init__(self):
@@ -65,6 +64,7 @@ class ArbitrageBot:
                 
             spread = ((mexc_price - dex_price) / dex_price) * 100
             
+            # Фільтрація занадто великих коливань
             if abs(spread) > SPREAD_MAX:
                 print(f"ℹ️ Пропущено {symbol}: спред {abs(spread):.2f}% > {SPREAD_MAX}% (завелике коливання)")
                 return None
@@ -111,6 +111,7 @@ class ArbitrageBot:
                         
                     spread, mexc_price, dex_price = result
                     
+                    # Фільтр за мінімальним спредом
                     if abs(spread) < SPREAD_MIN:
                         if symbol in self.active_signals:
                             print(f"❌ СКАСОВАНО {symbol} | {datetime.now().strftime('%H:%M:%S')}")
