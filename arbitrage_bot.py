@@ -10,8 +10,8 @@ SPREAD_MIN = 3.0  # Мінімальний спред 3%
 SPREAD_MAX = 50.0  # Максимальний спред 50% (відсіюємо великі коливання)
 VOLUME_MIN = 100000  # Мінімальний об'єм торгів ($)
 CHECK_INTERVAL = 30  # Перевірка кожні 30 сек
-TELEGRAM_TOKEN = "7642441111:AAEMbcxjql85mkpo4h-78uTKjfxAnI4Rls4"  # Опціонально
-CHAT_ID = "1010900272"  # Опціонально
+TELEGRAM_TOKEN = "  # Опціонально
+CHAT_ID = "  # Опціонально
 
 class ArbitrageBot:
     def __init__(self):
